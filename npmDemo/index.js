@@ -1,20 +1,29 @@
-const Sentiment = require('sentiment');
-const sentiment = new Sentiment();
+const User = function (name) {
+  this.name = name;
+  this.updateName = (name) => {
+    this.name = name;
+    // console.log(this); // 'this' is the current object
+    return this; // if we return it, we can 'chain' object methods together
+  };
+  this.addLocation = (location) => {
+    this.location = location;
+    // console.log(this); // 'this' is the current object
+    return this; // if we return it, we can 'chain' object methods together
+  };
+  this.printGreeting = () => {
+    console.log(`Hello, I'm ${this.name} in ${this.location}`); // 'this' is the current object
+  };
+};
 
-function sum(a, b) {
-  return a + b;
-}
+const kUser = new User('kingsley');
+const hUser = new User('h');
+console.log(kUser.updateName('1231233').printGreeting());
+console.log(hUser.addLocation('Auckland').printGreeting());
 
-function analyze(sentence) {
-    console.log('sentence',sentence)
-  const result = sentiment.analyze(sentence);
-// console.log("re:",result)
-  return result.score;
-}
+const user = {
+  name: 'John',
+};
 
-console.log("asfasdf");
-// const r = sum(3, 5);
-// console.log('r', r);
-// console.log(sum(3, 5));
-const sentence = "this is a sentence"
-console.log('result:', analyze(sentence));
+const a = [1, 2, 3];
+
+console.log(a[a.length - 1]);
